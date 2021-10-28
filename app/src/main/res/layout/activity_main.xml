@@ -64,7 +64,7 @@
         android:layout_marginBottom="64dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/instructTxt"
+        app:layout_constraintBottom_toTopOf="@+id/PlayerTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button7"
         app:layout_constraintTop_toTopOf="parent"
@@ -96,7 +96,7 @@
         android:layout_marginBottom="64dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/instructTxt"
+        app:layout_constraintBottom_toTopOf="@+id/PlayerTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button8"
         app:layout_constraintTop_toTopOf="parent"
@@ -114,8 +114,10 @@
         android:insetBottom="0dp"
         app:layout_constraintBottom_toTopOf="@+id/button4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         tools:text="Button 1" />
 
     <Button
@@ -144,7 +146,7 @@
         android:layout_marginBottom="64dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/instructTxt"
+        app:layout_constraintBottom_toTopOf="@+id/PlayerTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -167,10 +169,10 @@
         tools:text="Button 4" />
 
     <TextView
-        android:id="@+id/instructTxt"
+        android:id="@+id/PlayerTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/direction_text"
+        android:text="@string/player_x"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
