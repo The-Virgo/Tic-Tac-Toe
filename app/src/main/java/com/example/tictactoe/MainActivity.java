@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button button9;
     Button newGame;
 
+    String[] buttons = {"", "", "", "", "", "", "", "", ""};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +67,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button8.setText("");
         button9.setText("");
 
+        enableButtons();
+
         PlayerTxt.setText(R.string.player_x);
         xTurn = true;
     }
@@ -79,13 +83,104 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(clicked.getText() == ("") && xTurn){
             clicked.setText("X");
-            xTurn = false;
-            PlayerTxt.setText(R.string.player_o);
+            if(checkForWin()){
+                disableButtons();
+                PlayerTxt.setText(R.string.player_x_win);
+            }
+            else if(checkForTies()){
+                disableButtons();
+                PlayerTxt.setText(R.string.tie);
+            }
+            else{
+                xTurn = false;
+                PlayerTxt.setText(R.string.player_o);
+            }
+
         }
         else if(clicked.getText() == ("") && !xTurn){
             clicked.setText("O");
-            xTurn = true;
-            PlayerTxt.setText(R.string.player_x);
+            if(checkForWin()){
+                disableButtons();
+                PlayerTxt.setText(R.string.player_o_win);
+            }
+            else if(checkForTies()){
+                disableButtons();
+                PlayerTxt.setText(R.string.tie);
+            }
+            else{
+                xTurn = true;
+                PlayerTxt.setText(R.string.player_x);
+            }
+
         }
+    }
+
+    public void makeArray(){
+        buttons[0] = button1.getText().toString();
+        buttons[1] = button2.getText().toString();
+        buttons[2] = button3.getText().toString();
+        buttons[3] = button4.getText().toString();
+        buttons[4] = button5.getText().toString();
+        buttons[5] = button6.getText().toString();
+        buttons[6] = button7.getText().toString();
+        buttons[7] = button8.getText().toString();
+        buttons[8] = button9.getText().toString();
+    }
+
+    public boolean checkForWin(){
+        makeArray();
+        //check horizontal
+        for(int i = 0; i < 7; i = i + 3){
+            if(buttons[i].equals(buttons[i + 1]) && buttons[i].equals(buttons[i + 2]) && !buttons[i].equals("")){
+                return true;
+            }
+        }
+        //check vertical
+        for(int i = 0; i < 3; i++){
+            if(buttons[i].equals(buttons[i + 3]) && buttons[i].equals(buttons[i + 6]) && !buttons[i].equals("")){
+                return true;
+            }
+        }
+        //check diagonals
+        if(buttons[0].equals(buttons[4]) && buttons[0].equals(buttons[8]) && !buttons[0].equals("")){
+            return true;
+        }
+        if(buttons[2].equals(buttons[4]) && buttons[2].equals(buttons[6]) && !buttons[2].equals("")){
+            return true;
+        }
+            return false;
+    }
+
+    public boolean checkForTies(){
+        for(int i = 0; i < 9; i++){
+            if(buttons[i].equals("")){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void enableButtons(){
+        button1.setEnabled(true);
+        button2.setEnabled(true);
+        button3.setEnabled(true);
+        button4.setEnabled(true);
+        button5.setEnabled(true);
+        button6.setEnabled(true);
+        button7.setEnabled(true);
+        button8.setEnabled(true);
+        button9.setEnabled(true);
+    }
+
+    public void disableButtons(){
+        button1.setEnabled(false);
+        button2.setEnabled(false);
+        button3.setEnabled(false);
+        button4.setEnabled(false);
+        button5.setEnabled(false);
+        button6.setEnabled(false);
+        button7.setEnabled(false);
+        button8.setEnabled(false);
+        button9.setEnabled(false);
     }
 }
